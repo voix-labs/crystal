@@ -47,24 +47,26 @@ const OTPInputCard = ({ open, setOpen }: { open: boolean, setOpen: React.Dispatc
             <CardContent className="flex flex-col items-center">
                 <InputOTP maxLength={6}>
                     <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
+                        {Array.from({ length: 3 }, (_, i) => (
+                            <InputOTPSlot key={i} index={i} />
+                        ))}
                     </InputOTPGroup>
                     <InputOTPSeparator />
                     <InputOTPGroup>
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
+                        {Array.from({ length: 3 }, (_, i) => (
+                            <InputOTPSlot key={i} index={i + 3} />
+                        ))}
                     </InputOTPGroup>
                 </InputOTP>
             </CardContent>
-            <CardFooter className="flex justify-between">
-                <Button variant="outline" onClick={() => setOpen(false)}
-                >Cancel</Button>
+            <CardFooter className="flex justify-between gap-4">
+                <Button variant="outline" onClick={() => setOpen(false)} className="w-full">
+                    Cancel
+                </Button>
 
-                <Button onClick={() => setOpen(false)}
-                >Confirm</Button>
+                <Button onClick={() => setOpen(false)} className="w-full">
+                    Confirm
+                </Button>
             </CardFooter>
         </Card>
     )

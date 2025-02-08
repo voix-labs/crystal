@@ -32,7 +32,7 @@ export default function SignInForm() {
     if (!mounted) return null;
 
     return (
-        <div className="w-fit h-fit mx-auto border rounded-none md:rounded-2xl m-12 p-4 md:p-8 shadow-input bg-background border-border">
+        <div className="w-fit h-fit mx-auto border rounded-none md:rounded-2xl m-10 p-4 md:p-8 shadow-input bg-background border-border">
             <div className="flex justify-end">
                 <ThemeToggleButton />
             </div>

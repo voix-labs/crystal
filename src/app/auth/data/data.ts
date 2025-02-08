@@ -15,7 +15,7 @@ export const getLoginProviders = (theme?: string) => [
     },
     {
         name: "Zen Bright",
-        icon: theme === 'dark' ? `${TRADEMARK_PATH}/zenbright/zb-b.svg` : `${TRADEMARK_PATH}/zenbright/zb-y.svg`,
+        icon: `${TRADEMARK_PATH}/zenbright/zb-y.svg`,
         disabled: false,
     },
     {
