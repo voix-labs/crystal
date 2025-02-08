@@ -64,17 +64,15 @@ export default function SignUpForm() {
 
                 <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
-                <div className="flex flex-col space-y-4">
-                    <div className="flex space-x-4 flex-col gap-4">
-                        {SUPPORTED_LOGIN_PROVIDERS.map((provider) => (
-                            <BottomHighlightButton
-                                key={provider.name}
-                                title={provider.name}
-                                Icon={provider.icon}
-                                disabled={provider.disabled}
-                            />
-                        ))}
-                    </div>
+                <div className="grid grid-cols-2 gap-4">
+                    {SUPPORTED_LOGIN_PROVIDERS.map((provider) => (
+                        <BottomHighlightButton
+                            key={provider.name}
+                            title={provider.name}
+                            Icon={provider.icon}
+                            disabled={provider.disabled}
+                        />
+                    ))}
                 </div>
             </form>
         </div>
