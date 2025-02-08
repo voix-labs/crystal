@@ -20,6 +20,7 @@ export function BottomHighlightButton({ title, disabled, Icon }: { title: string
                     <Icon width={16} height={16} />
                 )
             )}
+
             {title}
 
             <BottomGradient />
