@@ -2,7 +2,7 @@ import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react';
 
 let TRADEMARK_PATH = "/trademark";
 
-export const SUPPORTED_LOGIN_PROVIDERS = [
+export const getLoginProviders = (theme?: string) => [
     {
         name: "GitHub",
         icon: IconBrandGithub,
@@ -15,7 +15,7 @@ export const SUPPORTED_LOGIN_PROVIDERS = [
     },
     {
         name: "Zen Bright",
-        icon: `${TRADEMARK_PATH}/zenbright/zb-y.svg`,
+        icon: theme === 'dark' ? `${TRADEMARK_PATH}/zenbright/zb-b.svg` : `${TRADEMARK_PATH}/zenbright/zb-y.svg`,
         disabled: false,
     },
     {
