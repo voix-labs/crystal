@@ -16,12 +16,12 @@ export const SUPPORTED_LOGIN_PROVIDERS = [
     {
         name: "Zen Bright",
         icon: `${TRADEMARK_PATH}/zenbright/zb-y.svg`,
-        disabled: true,
+        disabled: false,
     },
     {
         name: "Tuturuuu",
         icon: `${TRADEMARK_PATH}/tuturuuu/ttr-b.svg`,
-        disabled: true,
+        disabled: false,
     }
 ]
 

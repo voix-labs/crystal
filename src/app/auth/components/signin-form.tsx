@@ -23,20 +23,24 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import OTPInputCard from "./otp-input";
+import APP_LOGO from "@public/trademark/crystal/app-logo.svg";
 
-export default function SignUpForm() {
+export default function SignInForm() {
     const [isShowOTP, setIsShowOTP] = React.useState(false);
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log("Form submitted");
     };
 
-    const APP_LOGO = "/trademark/crystal/app-logo.svg";
-
     return (
-        <div className="w-fit h-fit mx-auto border rounded-none md:rounded-2xl m-12 p-4 md:p-8 shadow-input bg-white border-neutral-700 dark:bg-black">
+        <div className="w-fit h-fit mx-auto border rounded-none md:rounded-2xl m-12 p-4 md:p-8 shadow-input bg-background border-border">
             <div className="flex justify-center mb-4">
-                <Image src={APP_LOGO} alt="Crystal Logo" width={50} height={50} />
+                <Image
+                    src={APP_LOGO}
+                    alt="App logo"
+                    width={40}
+                    height={40}
+                />
             </div>
             <h2 className="font-bold text-3xl text-neutral-800 dark:text-neutral-200 text-center">
                 {STRINGS.SIGNUP_TITLE}
@@ -69,14 +73,8 @@ export default function SignUpForm() {
                 {isShowOTP && (
                     <div
                         className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-                        onClick={() => setIsShowOTP(false)}
                     >
-                        <div
-                            className="bg-white dark:bg-black p-4 rounded shadow-lg"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <OTPInputCard />
-                        </div>
+                        <OTPInputCard open={isShowOTP} setOpen={setIsShowOTP} />
                     </div>
                 )}
             </form>

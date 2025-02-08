@@ -1,5 +1,5 @@
 "use client"
-import SignUpForm from "./components/signup-form"
+import SignInForm from "./components/signin-form"
 import Image from "next/image"
 
 export default function SignUpPage() {
@@ -13,8 +13,8 @@ export default function SignUpPage() {
                 className="object-cover"
                 alt="Auth background"
             />
-            <div className="relative z-10 bg-white dark:bg-black rounded shadow">
-                <SignUpForm />
+            <div className="relative z-10 rounded shadow">
+                <SignInForm />
             </div>
         </div>
     )
