@@ -23,11 +23,11 @@ const SUPPORTED_LOGIN_PROVIDERS = [
     },
     {
         name: "Zen Bright",
-        icon: IconSun,
+        icon: "/zb-y.svg"
     },
     {
-        name: "OnlyFans",
-        icon: IconBrandOnlyfans,
+        name: "Tuturuuu",
+        icon: "/ttr-b.svg"
     }
 ]
 
