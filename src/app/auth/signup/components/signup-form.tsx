@@ -7,8 +7,25 @@ import { BottomHighlightButton } from "@components/ui/bottom-highlight-button";
 import Image from "next/image";
 import { SUPPORTED_LOGIN_PROVIDERS, STRINGS } from "../data/data";
 import AnimatedGradientBorderButton from "@/components/ui/animated-gradient-border-button";
+import {
+    InputOTP,
+    InputOTPGroup,
+    InputOTPSeparator,
+    InputOTPSlot,
+} from "@/components/ui/input-otp"
+
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card"
+import OTPInputCard from "./otp-input";
 
 export default function SignUpForm() {
+    const [isShowOTP, setIsShowOTP] = React.useState(false);
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log("Form submitted");
@@ -29,38 +46,12 @@ export default function SignUpForm() {
             </p>
 
             <form className="my-8" onSubmit={handleSubmit}>
-                <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="firstname">{STRINGS.FIRST_NAME}</Label>
-                        <Input id="firstname" placeholder="Quoc" type="text" />
-                    </LabelInputContainer>
-
-                    <LabelInputContainer>
-                        <Label htmlFor="lastname">{STRINGS.LAST_NAME}</Label>
-                        <Input id="lastname" placeholder="Doan" type="text" />
-                    </LabelInputContainer>
-                </div>
-
                 <LabelInputContainer className="mb-4">
                     <Label htmlFor="email">{STRINGS.EMAIL}</Label>
                     <Input id="email" placeholder="meow@crystal.ai" type="email" />
                 </LabelInputContainer>
 
-                <LabelInputContainer className="mb-4">
-                    <Label htmlFor="password">{STRINGS.PASSWORD}</Label>
-                    <Input id="password" placeholder="••••••••" type="password" />
-                </LabelInputContainer>
-
-                <LabelInputContainer className="mb-8">
-                    <Label htmlFor="confirm_password">{STRINGS.CONFIRM_PASSWORD}</Label>
-                    <Input
-                        id="confirm_password"
-                        placeholder="••••••••"
-                        type="password"
-                    />
-                </LabelInputContainer>
-
-                <AnimatedGradientBorderButton title={STRINGS.SIGNUP + " →"} />
+                <AnimatedGradientBorderButton title={STRINGS.SIGNUP + " →"} onClick={() => setIsShowOTP(true)} />
 
                 <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
@@ -74,6 +65,20 @@ export default function SignUpForm() {
                         />
                     ))}
                 </div>
+
+                {isShowOTP && (
+                    <div
+                        className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+                        onClick={() => setIsShowOTP(false)}
+                    >
+                        <div
+                            className="bg-white dark:bg-black p-4 rounded shadow-lg"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <OTPInputCard />
+                        </div>
+                    </div>
+                )}
             </form>
         </div>
     );
