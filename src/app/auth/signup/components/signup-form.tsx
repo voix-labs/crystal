@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import { Label } from "@components/ui/label";
 import { Input } from "@components/ui/input";
 import { cn } from "@/lib/utils";
@@ -7,8 +7,10 @@ import {
     IconBrandGithub,
     IconBrandGoogle,
     IconBrandOnlyfans,
+    IconSun
 } from "@tabler/icons-react";
 import { BottomHighlightButton } from "@components/ui/bottom-highlight-button";
+import Image from "next/image";
 
 const SUPPORTED_LOGIN_PROVIDERS = [
     {
@@ -21,8 +23,12 @@ const SUPPORTED_LOGIN_PROVIDERS = [
     },
     {
         name: "Zen Bright",
-        icon: IconBrandOnlyfans,
+        icon: IconSun,
     },
+    {
+        name: "OnlyFans",
+        icon: IconBrandOnlyfans,
+    }
 ]
 
 export default function SignUpForm() {
@@ -32,7 +38,10 @@ export default function SignUpForm() {
     };
 
     return (
-        <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+        <div className="w-fit h-fit mx-auto border rounded-none md:rounded-2xl m-12 p-4 md:p-8 shadow-input bg-white border-neutral-700 dark:bg-black">
+            <div className="flex justify-center mb-4">
+                <Image src="/next-logo.png" alt="Next.js Logo" width={100} height={100} />
+            </div>
             <h2 className="font-bold text-3xl text-neutral-800 dark:text-neutral-200 text-center">
                 Welcome to Crystal
             </h2>
