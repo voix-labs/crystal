@@ -1,5 +1,7 @@
 import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react';
 
+let TRADEMARK_PATH = "/trademark";
+
 export const SUPPORTED_LOGIN_PROVIDERS = [
     {
         name: "GitHub",
@@ -13,12 +15,12 @@ export const SUPPORTED_LOGIN_PROVIDERS = [
     },
     {
         name: "Zen Bright",
-        icon: "/zb-y.svg",
+        icon: `${TRADEMARK_PATH}/zenbright/zb-y.svg`,
         disabled: true,
     },
     {
         name: "Tuturuuu",
-        icon: "/ttr-b.svg",
+        icon: `${TRADEMARK_PATH}/tuturuuu/ttr-b.svg`,
         disabled: true,
     }
 ]

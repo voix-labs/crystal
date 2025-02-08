@@ -6,6 +6,7 @@ import LabelInputContainer from "./label-input-container";
 import { BottomHighlightButton } from "@components/ui/bottom-highlight-button";
 import Image from "next/image";
 import { SUPPORTED_LOGIN_PROVIDERS, STRINGS } from "../data/data";
+import AnimatedGradientBorderButton from "@/components/ui/animated-gradient-border-button";
 
 export default function SignUpForm() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -13,7 +14,7 @@ export default function SignUpForm() {
         console.log("Form submitted");
     };
 
-    const APP_LOGO = "/trademark/app-logo.svg";
+    const APP_LOGO = "/trademark/crystal/app-logo.svg";
 
     return (
         <div className="w-fit h-fit mx-auto border rounded-none md:rounded-2xl m-12 p-4 md:p-8 shadow-input bg-white border-neutral-700 dark:bg-black">
@@ -31,18 +32,18 @@ export default function SignUpForm() {
                 <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
                     <LabelInputContainer>
                         <Label htmlFor="firstname">{STRINGS.FIRST_NAME}</Label>
-                        <Input id="firstname" placeholder="Tyler" type="text" />
+                        <Input id="firstname" placeholder="Quoc" type="text" />
                     </LabelInputContainer>
 
                     <LabelInputContainer>
                         <Label htmlFor="lastname">{STRINGS.LAST_NAME}</Label>
-                        <Input id="lastname" placeholder="Durden" type="text" />
+                        <Input id="lastname" placeholder="Doan" type="text" />
                     </LabelInputContainer>
                 </div>
 
                 <LabelInputContainer className="mb-4">
                     <Label htmlFor="email">{STRINGS.EMAIL}</Label>
-                    <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+                    <Input id="email" placeholder="meow@crystal.ai" type="email" />
                 </LabelInputContainer>
 
                 <LabelInputContainer className="mb-4">
@@ -59,12 +60,7 @@ export default function SignUpForm() {
                     />
                 </LabelInputContainer>
 
-                <button
-                    className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white text-sm rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-                    type="submit"
-                >
-                    {STRINGS.SIGNUP} &rarr;
-                </button>
+                <AnimatedGradientBorderButton title={STRINGS.SIGNUP + " →"} />
 
                 <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 

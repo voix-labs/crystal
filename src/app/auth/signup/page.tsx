@@ -3,7 +3,7 @@ import SignUpForm from "./components/signup-form"
 import Image from "next/image"
 
 export default function SignUpPage() {
-    const AUTH_BG = "/auth-bg.jpg"
+    const AUTH_BG = "/auth/auth-bg.jpg"
 
     return (
         <div className="relative min-h-screen flex items-center justify-center">
