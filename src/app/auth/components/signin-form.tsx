@@ -1,39 +1,42 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Label } from "@components/ui/label";
 import { Input } from "@components/ui/input";
 import LabelInputContainer from "./label-input-container";
 import { BottomHighlightButton } from "@components/ui/bottom-highlight-button";
 import Image from "next/image";
-import { SUPPORTED_LOGIN_PROVIDERS, STRINGS } from "../data/data";
+import { getLoginProviders, STRINGS } from "../data/data";
 import AnimatedGradientBorderButton from "@/components/ui/animated-gradient-border-button";
-import {
-    InputOTP,
-    InputOTPGroup,
-    InputOTPSeparator,
-    InputOTPSlot,
-} from "@/components/ui/input-otp"
-
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import ThemeToggleButton from "./theme-toggle-button";
 import OTPInputCard from "./otp-input";
-import APP_LOGO from "@public/trademark/crystal/app-logo.svg";
+import { useTheme } from "next-themes";
 
 export default function SignInForm() {
-    const [isShowOTP, setIsShowOTP] = React.useState(false);
+    const [isShowOTP, setIsShowOTP] = useState(false);
+    const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    const SUPPORTED_LOGIN_PROVIDERS = getLoginProviders(theme);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const APP_LOGO = theme === "dark" ? "/trademark/crystal/app-logo.svg" : "/trademark/crystal/app-logo-dark.svg";
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log("Form submitted");
     };
 
+    if (!mounted) return null;
+
     return (
         <div className="w-fit h-fit mx-auto border rounded-none md:rounded-2xl m-12 p-4 md:p-8 shadow-input bg-background border-border">
+            <div className="flex justify-end">
+                <ThemeToggleButton />
+            </div>
+
             <div className="flex justify-center mb-4">
                 <Image
                     src={APP_LOGO}
