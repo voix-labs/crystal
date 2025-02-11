@@ -59,7 +59,7 @@ export class EmailOTPServices implements AuthServiceInterface {
         throw new Error("Method not needed. Do not implement.");
     }
 
-    async signOut(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+    async signOut(res: NextApiResponse): Promise<void> {
         const supabase = await createClient();
         await supabase.auth.signOut();
     }

@@ -36,9 +36,9 @@ export default class AuthController {
         }
     }
 
-    async signOut(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+    async signOut(res: NextApiResponse): Promise<void> {
         try {
-            await this.authService.signOut(req, res);
+            await this.authService.signOut(res);
             res.status(ResponseCode.SUCCESS).json({ message: 'Sign out successful' });
         } catch (error: any) {
             res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: error.message || 'Internal Server Error' });
