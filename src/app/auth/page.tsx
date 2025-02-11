@@ -1,4 +1,3 @@
-"use client"
 import SignInForm from "@/components/auth/signin-form"
 import Image from "next/image"
 
