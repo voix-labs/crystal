@@ -21,7 +21,6 @@ export class EmailOTPServices implements AuthServiceInterface {
             email: email,
             options: {
                 shouldCreateUser: true,
-                emailRedirectTo: '/auth/confirm'
             },
         })
 
