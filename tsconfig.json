@@ -34,7 +34,16 @@
       ],
       "@public/*": [
         "./public/*"
-      ]
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
     }
   },
   "include": [

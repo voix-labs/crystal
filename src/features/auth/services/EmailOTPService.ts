@@ -1,3 +1,4 @@
+import { ResponseCode } from "@/utils/strings/response-code";
 import AuthServiceInterface from "../interfaces/AuthServiceInterface";
 import { createClient } from "@/utils/supabase/server";
 
@@ -26,11 +27,11 @@ export class EmailOTPServices implements AuthServiceInterface {
 
         if (error) {
             console.error("Error signing in with OTP: ", error);
-            res.status(500).json({ error: "Error signing in with OTP" });
+            res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: "Error signing in with OTP" });
             return;
         }
 
-        res.status(200).json({ data });
+        res.status(ResponseCode.SUCCESS).json({ data });
     }
 
     async verifyOTP(req: any, res: any): Promise<void> {
@@ -46,14 +47,14 @@ export class EmailOTPServices implements AuthServiceInterface {
 
         if (error) {
             console.error("Error verifying OTP: ", error);
-            res.status(500).json({ error: "Error verifying OTP" });
+            res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: "Error verifying OTP" });
             return;
         }
 
-        res.status(200).json({ session });
+        res.status(ResponseCode.SUCCESS).json({ session });
     }
 
-    async signUp(req: any, res: any): Promise<void> {
+    async signUp(_req: any, _res: any): Promise<void> {
         throw new Error("Method not needed. Do not implement.");
     }
 

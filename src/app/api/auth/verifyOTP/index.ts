@@ -1,7 +1,8 @@
 import AuthController from "../../../../features/auth/controllers/AuthController";
 import { NextApiResponse, NextApiRequest } from "next";
+import { ResponseCode } from "@/utils/strings/response-code";
 
-export const verifyOTP = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+export const verifyOTP = async (req: NextApiRequest, res: NextApiResponse): Promise<any> => {
     const { email, otp } = req.body;
     const authController = AuthController.getInstance();
     const {
@@ -10,10 +11,9 @@ export const verifyOTP = async (req: NextApiRequest, res: NextApiResponse): Prom
     } = await authController.verifyOTP(email, otp, res);
 
     if (error) {
-        console.error("Error verifying OTP: ", error);
-        res.status(500).json({ error: "Error verifying OTP" });
-        return;
+        res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: "Error verifying OTP" });
+        return res;
     }
 
-    res.status(200).json({ session });
+    return res.status(ResponseCode.SUCCESS).json({ session });
 }

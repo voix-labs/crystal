@@ -1,3 +1,4 @@
+import { ResponseCode } from '@/utils/strings/response-code';
 import AuthServiceInterface from '../interfaces/AuthServiceInterface';
 import { EmailOTPServices } from '../services/EmailOTPService';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -20,9 +21,9 @@ export default class AuthController {
     async signIn(email: string, res: NextApiResponse): Promise<void> {
         try {
             await this.authService.signIn(email, res);
-            res.status(200).json({ message: 'OTP sent to email' });
+            res.status(ResponseCode.SUCCESS).json({ message: 'OTP sent to email' });
         } catch (error: any) {
-            res.status(500).json({ error: error.message || 'Internal Server Error' });
+            res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: error.message || 'Internal Server Error' });
         }
     }
 
@@ -30,15 +31,16 @@ export default class AuthController {
         try {
             await this.authService.signUp(req, res);
         } catch (error: any) {
-            res.status(500).json({ error: error.message || 'Internal Server Error' });
+            res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: error.message || 'Internal Server Error' });
         }
     }
 
     async signOut(res: NextApiResponse): Promise<void> {
         try {
             await this.authService.signOut(res);
+            res.status(ResponseCode.SUCCESS).json({ message: 'Sign out successful' });
         } catch (error: any) {
-            res.status(500).json({ error: error.message || 'Internal Server Error' });
+            res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: error.message || 'Internal Server Error' });
         }
     }
 
