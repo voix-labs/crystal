@@ -38,6 +38,7 @@
     "@radix-ui/react-toggle-group": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.48.1",
     "@tabler/icons-react": "^3.30.0",
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
@@ -72,6 +73,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
+    "supabase": "^2.12.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
   }
