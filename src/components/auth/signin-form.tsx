@@ -5,14 +5,12 @@ import { Input } from "@components/ui/input";
 import LabelInputContainer from "./label-input-container";
 import { BottomHighlightButton } from "@components/ui/bottom-highlight-button";
 import Image from "next/image";
-import { getLoginProviders, STRINGS } from "../data/data";
+import { getLoginProviders, STRINGS } from "@/data/auth/data";
 import AnimatedGradientBorderButton from "@/components/ui/animated-gradient-border-button";
 import ThemeToggleButton from "./theme-toggle-button";
 import OTPInputCard from "./otp-input";
 import { useTheme } from "next-themes";
 import axios from "axios";
-import { NextApiResponse } from "next";
-import AuthController from "@/app/api/auth/signin/controllers/AuthController";
 
 export default function SignInForm() {
     const [isShowOTP, setIsShowOTP] = useState(false);
@@ -30,13 +28,22 @@ export default function SignInForm() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        let res = {} as NextApiResponse;
         try {
-            AuthController.getInstance().signIn(e.currentTarget.email.value, res);
+            axios.post("/api/auth/signin", { email: e.currentTarget.email.value });
         } catch (error: any) {
             console.error(error);
         }
     };
+
+    const handleVerifyOTP = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        try {
+            axios.post("/api/auth/verifyOTP", { email: e.currentTarget.email.value });
+        } catch (error: any) {
+            console.error(error);
+        }
+    }
 
     if (!mounted) return null;
 
@@ -86,7 +93,7 @@ export default function SignInForm() {
                     <div
                         className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
                     >
-                        <OTPInputCard open={isShowOTP} setOpen={setIsShowOTP} />
+                        <OTPInputCard open={isShowOTP} setOpen={setIsShowOTP} onSubmit={() => handleVerifyOTP} />
                     </div>
                 )}
             </form>

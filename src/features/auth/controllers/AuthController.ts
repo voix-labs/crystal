@@ -20,6 +20,7 @@ export default class AuthController {
     async signIn(email: string, res: NextApiResponse): Promise<void> {
         try {
             await this.authService.signIn(email, res);
+            res.status(200).json({ message: 'OTP sent to email' });
         } catch (error: any) {
             res.status(500).json({ error: error.message || 'Internal Server Error' });
         }
@@ -44,5 +45,9 @@ export default class AuthController {
     public setAuthService(authService: AuthServiceInterface): AuthController {
         this.authService = authService;
         return this;
+    }
+
+    public verifyOTP(email: string, otp: string, res: NextApiResponse): any {
+        return this.authService.verifyOTP(email, otp, res);
     }
 }

@@ -1,5 +1,5 @@
 "use client"
-import SignInForm from "./components/signin-form"
+import SignInForm from "@/components/auth/signin-form"
 import Image from "next/image"
 
 export default function SignUpPage() {

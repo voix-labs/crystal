@@ -11,7 +11,7 @@ import {
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp"
 import React from "react"
 
-const OTPInputCard = ({ open, setOpen }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const OTPInputCard = ({ open, setOpen, onSubmit }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, onSubmit: () => void }) => {
     const [remainingTime, setRemainingTime] = React.useState(60);
 
     React.useEffect(() => {
@@ -64,7 +64,7 @@ const OTPInputCard = ({ open, setOpen }: { open: boolean, setOpen: React.Dispatc
                     Cancel
                 </Button>
 
-                <Button onClick={() => setOpen(false)} className="w-full">
+                <Button onClick={() => { setOpen(false), onSubmit() }} className="w-full">
                     Confirm
                 </Button>
             </CardFooter>
