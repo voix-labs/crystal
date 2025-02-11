@@ -6,7 +6,6 @@ import { BottomHighlightButton } from "@components/ui/bottom-highlight-button";
 import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
 import axios from "axios";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import React, { useState } from "react";
 import LabelInputContainer from "./label-input-container";
@@ -14,17 +13,10 @@ import OTPInputCard from "./otp-input";
 import ThemeToggleButton from "./theme-toggle-button";
 
 export default function SignInForm() {
-  const { theme } = useTheme();
-
   const [isShowOTP, setIsShowOTP] = useState(false);
   const [email, setEmail] = useState("");
 
-  const SUPPORTED_LOGIN_PROVIDERS = getLoginProviders(theme);
-
-  const APP_LOGO =
-    theme === "dark"
-      ? "/trademark/crystal/app-logo.svg"
-      : "/trademark/crystal/app-logo-dark.svg";
+  const SUPPORTED_LOGIN_PROVIDERS = getLoginProviders();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,7 +38,20 @@ export default function SignInForm() {
       </div>
 
       <div className="flex justify-center mb-4">
-        <Image src={APP_LOGO} alt="App logo" width={40} height={40} />
+        <Image
+          src="/trademark/crystal/app-logo.svg"
+          alt="App logo"
+          width={40}
+          height={40}
+          className="hidden dark:block"
+        />
+        <Image
+          src="/trademark/crystal/app-logo-dark.svg"
+          alt="App logo"
+          width={40}
+          height={40}
+          className="dark:hidden"
+        />
       </div>
       <h2 className="font-bold text-3xl text-neutral-800 dark:text-neutral-200 text-center">
         {STRINGS.SIGNUP_TITLE}
