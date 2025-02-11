@@ -18,12 +18,13 @@ export default class AuthController {
         return AuthController.instance;
     }
 
-    async signIn(email: string, res: NextApiResponse): Promise<void> {
+    async signIn(req: NextApiRequest, res: NextApiResponse): Promise<void> {
         try {
-            await this.authService.signIn(email, res);
+            await this.authService.signIn(req, res);
             res.status(ResponseCode.SUCCESS).json({ message: 'OTP sent to email' });
         } catch (error: any) {
             res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: error.message || 'Internal Server Error' });
+            console.error('Error signing in with OTP: ', error);
         }
     }
 
@@ -35,9 +36,9 @@ export default class AuthController {
         }
     }
 
-    async signOut(res: NextApiResponse): Promise<void> {
+    async signOut(req: NextApiRequest, res: NextApiResponse): Promise<void> {
         try {
-            await this.authService.signOut(res);
+            await this.authService.signOut(req, res);
             res.status(ResponseCode.SUCCESS).json({ message: 'Sign out successful' });
         } catch (error: any) {
             res.status(ResponseCode.INTERNAL_SERVER_ERROR).json({ error: error.message || 'Internal Server Error' });
@@ -49,7 +50,7 @@ export default class AuthController {
         return this;
     }
 
-    public verifyOTP(email: string, otp: string, res: NextApiResponse): any {
-        return this.authService.verifyOTP(email, otp, res);
+    public verifyOTP(req: NextApiRequest, res: NextApiResponse): any {
+        return this.authService.verifyOTP(req, res);
     }
 }

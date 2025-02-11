@@ -9,10 +9,26 @@ import {
 } from "@/components/ui/card"
 
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp"
+import axios from "axios";
 import React from "react"
 
-const OTPInputCard = ({ open, setOpen, onSubmit }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, onSubmit: () => void }) => {
+interface OTPInputCardProps {
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    email: string;
+}
+
+const OTPInputCard: React.FC<OTPInputCardProps> = ({ open, setOpen, email }) => {
     const [remainingTime, setRemainingTime] = React.useState(60);
+    const [otp, setOTP] = React.useState("");
+
+    const handleSubmit = async (otp: string) => {
+        try {
+            axios.post("/api/auth/verifyOTP", { email: email, otp: otp });
+        } catch (error: any) {
+            console.error(error);
+        }
+    }
 
     React.useEffect(() => {
         if (remainingTime > 0) {
@@ -45,7 +61,7 @@ const OTPInputCard = ({ open, setOpen, onSubmit }: { open: boolean, setOpen: Rea
                 </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col items-center">
-                <InputOTP maxLength={6}>
+                <InputOTP maxLength={6} value={otp} onChange={(value: string) => setOTP(value)}>
                     <InputOTPGroup>
                         {Array.from({ length: 3 }, (_, i) => (
                             <InputOTPSlot key={i} index={i} />
@@ -64,7 +80,7 @@ const OTPInputCard = ({ open, setOpen, onSubmit }: { open: boolean, setOpen: Rea
                     Cancel
                 </Button>
 
-                <Button onClick={() => { setOpen(false), onSubmit() }} className="w-full">
+                <Button onClick={() => { setOpen(false), handleSubmit(otp) }} className="w-full">
                     Confirm
                 </Button>
             </CardFooter>

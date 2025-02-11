@@ -1,10 +1,10 @@
 import { ResponseCode } from "@/utils/strings/response-code";
 import AuthServiceInterface from "../interfaces/AuthServiceInterface";
 import { createClient } from "@/utils/supabase/server";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export class EmailOTPServices implements AuthServiceInterface {
     public static instance: EmailOTPServices;
-    private supabase = createClient();
 
     private constructor() { }
 
@@ -15,14 +15,15 @@ export class EmailOTPServices implements AuthServiceInterface {
         return EmailOTPServices.instance;
     }
 
-    async signIn(req: any, res: any): Promise<void> {
+    async signIn(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+        const supabase = await createClient();
         const { email } = req.body;
-        const { data, error } = await (await this.supabase).auth.signInWithOtp({
+        const { data, error } = await supabase.auth.signInWithOtp({
             email: email,
             options: {
                 shouldCreateUser: true,
             },
-        })
+        });
 
         if (error) {
             console.error("Error signing in with OTP: ", error);
@@ -33,16 +34,17 @@ export class EmailOTPServices implements AuthServiceInterface {
         res.status(ResponseCode.SUCCESS).json({ data });
     }
 
-    async verifyOTP(req: any, res: any): Promise<void> {
+    async verifyOTP(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+        const supabase = await createClient();
         const { email, otp } = req.body;
         const {
             data: { session },
             error,
-        } = await (await this.supabase).auth.verifyOtp({
+        } = await supabase.auth.verifyOtp({
             email,
             token: otp,
             type: 'email',
-        })
+        });
 
         if (error) {
             console.error("Error verifying OTP: ", error);
@@ -53,11 +55,12 @@ export class EmailOTPServices implements AuthServiceInterface {
         res.status(ResponseCode.SUCCESS).json({ session });
     }
 
-    async signUp(_req: any, _res: any): Promise<void> {
+    async signUp(_req: NextApiRequest, _res: NextApiResponse): Promise<void> {
         throw new Error("Method not needed. Do not implement.");
     }
 
-    async signOut(res: any): Promise<void> {
-        await (await this.supabase).auth.signOut();
+    async signOut(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+        const supabase = await createClient();
+        await supabase.auth.signOut();
     }
 }

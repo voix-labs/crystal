@@ -16,7 +16,7 @@ export default function SignInForm() {
     const [isShowOTP, setIsShowOTP] = useState(false);
     const { theme } = useTheme();
     const [mounted, setMounted] = useState(false);
-
+    const [email, setEmail] = useState("");
     const SUPPORTED_LOGIN_PROVIDERS = getLoginProviders(theme);
 
     useEffect(() => {
@@ -30,20 +30,11 @@ export default function SignInForm() {
 
         try {
             axios.post("/api/auth/signin", { email: e.currentTarget.email.value });
+            setEmail(e.currentTarget.email.value);
         } catch (error: any) {
-            console.error(error);
+            console.error("Error signing in with OTP: ", error);
         }
     };
-
-    const handleVerifyOTP = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        try {
-            axios.post("/api/auth/verifyOTP", { email: e.currentTarget.email.value });
-        } catch (error: any) {
-            console.error(error);
-        }
-    }
 
     if (!mounted) return null;
 
@@ -93,7 +84,7 @@ export default function SignInForm() {
                     <div
                         className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
                     >
-                        <OTPInputCard open={isShowOTP} setOpen={setIsShowOTP} onSubmit={() => handleVerifyOTP} />
+                        <OTPInputCard open={isShowOTP} setOpen={setIsShowOTP} email={email} />
                     </div>
                 )}
             </form>
