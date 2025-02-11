@@ -10,6 +10,9 @@ import AnimatedGradientBorderButton from "@/components/ui/animated-gradient-bord
 import ThemeToggleButton from "./theme-toggle-button";
 import OTPInputCard from "./otp-input";
 import { useTheme } from "next-themes";
+import axios from "axios";
+import { NextApiResponse } from "next";
+import AuthController from "@/app/api/auth/signin/controllers/AuthController";
 
 export default function SignInForm() {
     const [isShowOTP, setIsShowOTP] = useState(false);
@@ -24,9 +27,15 @@ export default function SignInForm() {
 
     const APP_LOGO = theme === "dark" ? "/trademark/crystal/app-logo.svg" : "/trademark/crystal/app-logo-dark.svg";
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Form submitted");
+
+        let res = {} as NextApiResponse;
+        try {
+            AuthController.getInstance().signIn(e.currentTarget.email.value, res);
+        } catch (error: any) {
+            console.error(error);
+        }
     };
 
     if (!mounted) return null;
