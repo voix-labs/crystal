@@ -44,6 +44,12 @@
       "@lib/*": [
         "./src/lib/*"
       ],
+      "@contexts/*": [
+        "./src/contexts/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
     }
   },
   "include": [

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import c from "classnames";
+import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 import "./audio-pulse.scss";
 
@@ -48,7 +48,7 @@ export default function AudioPulse({ active, volume, hover }: AudioPulseProps) {
   }, [volume]);
 
   return (
-    <div className={c("audioPulse", { active, hover })}>
+    <div className={cn("audioPulse", { active, hover })}>
       {Array(lineCount)
         .fill(null)
         .map((_, i) => (

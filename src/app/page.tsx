@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/config/supabase/server";
 import { LogIn } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";

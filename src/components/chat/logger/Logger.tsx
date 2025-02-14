@@ -17,11 +17,11 @@
 import "./logger.scss";
 
 import { Part } from "@google/generative-ai";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import React, { ReactNode } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { vs2015 as dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { useLoggerStore } from "../../lib/store-logger";
+import { useLoggerStore } from "@lib/store-logger";
 import {
   ClientContentMessage,
   isClientContentMessage,
@@ -38,7 +38,7 @@ import {
   ToolCallCancellationMessage,
   ToolCallMessage,
   ToolResponseMessage,
-} from "../../multimodal-live-types";
+} from "@/config/chat/multimodal-live-types";
 
 const formatTime = (d: Date) => d.toLocaleTimeString().slice(0, -3);
 

@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import cn from "classnames";
-
+import { cn } from "@/lib/utils";
 import { memo, ReactNode, RefObject, useEffect, useRef, useState } from "react";
-import { useLiveAPIContext } from "../../contexts/LiveAPIContext";
-import { UseMediaStreamResult } from "../../hooks/use-media-stream-mux";
-import { useScreenCapture } from "../../hooks/use-screen-capture";
-import { useWebcam } from "../../hooks/use-webcam";
-import { AudioRecorder } from "../../lib/audio-recorder";
-import AudioPulse from "../audio-pulse/AudioPulse";
+import { useLiveAPIContext } from "@contexts/LiveAPIContext";
+import { UseMediaStreamResult } from "@hooks/use-media-stream-mux";
+import { useScreenCapture } from "@hooks/use-screen-capture";
+import { useWebcam } from "@hooks/use-webcam";
+import { AudioRecorder } from "@lib/audio-recorder";
+import AudioPulse from "@/components/chat/audio-pulse/AudioPulse";
 import "./control-tray.scss";
 
 export type ControlTrayProps = {

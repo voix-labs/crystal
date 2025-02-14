@@ -16,11 +16,11 @@
 
 import { useRef, useState } from "react";
 import "./App.scss";
-import { LiveAPIProvider } from "./contexts/LiveAPIContext";
-import SidePanel from "./components/side-panel/SidePanel";
-import { Altair } from "./components/altair/Altair";
-import ControlTray from "./components/control-tray/ControlTray";
-import cn from "classnames";
+import { LiveAPIProvider } from "@contexts/LiveAPIContext"
+import SidePanel from "@/components/chat/side-panel/SidePanel";
+import { Altair } from "@/components/chat/altair/Altair";
+import ControlTray from "@/components/chat/control-tray/ControlTray";
+import { cn } from "@/lib/utils";
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {

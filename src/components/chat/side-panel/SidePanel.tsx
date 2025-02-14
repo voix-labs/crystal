@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { RiSidebarFoldLine, RiSidebarUnfoldLine } from "react-icons/ri";
 import Select from "react-select";
-import { useLiveAPIContext } from "../../contexts/LiveAPIContext";
-import { useLoggerStore } from "../../lib/store-logger";
-import Logger, { LoggerFilterType } from "../logger/Logger";
+import { useLiveAPIContext } from "@contexts/LiveAPIContext";
+import { useLoggerStore } from "@lib/store-logger";
+import Logger, { LoggerFilterType } from "@/components/chat/logger/Logger";
 import "./side-panel.scss";
 
 const filterOptions = [

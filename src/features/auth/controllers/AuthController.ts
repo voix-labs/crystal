@@ -1,4 +1,4 @@
-import { ResponseCode } from "@/utils/strings/response-code";
+import { ResponseCode } from "@/config/strings/response-code";
 import { NextRequest, NextResponse } from "next/server";
 import AuthServiceInterface from "../interfaces/AuthServiceInterface";
 import { EmailOTPServices } from "../services/EmailOTPService";

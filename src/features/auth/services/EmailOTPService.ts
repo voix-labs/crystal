@@ -1,5 +1,5 @@
-import { ResponseCode } from "@/utils/strings/response-code";
-import { createClient } from "@/utils/supabase/server";
+import { ResponseCode } from "@/config/strings/response-code";
+import { createClient } from "@/config/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 import AuthServiceInterface from "../interfaces/AuthServiceInterface";
 

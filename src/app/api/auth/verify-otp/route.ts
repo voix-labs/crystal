@@ -1,5 +1,5 @@
 import AuthController from "@/features/auth/controllers/AuthController";
-import { ResponseCode } from "@/utils/strings/response-code";
+import { ResponseCode } from "@/config/strings/response-code";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {

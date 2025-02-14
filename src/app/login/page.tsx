@@ -1,5 +1,5 @@
 import SignInForm from "@/components/auth/signin-form";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/config/supabase/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
