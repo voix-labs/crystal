@@ -1,6 +1,6 @@
 # A string used to distinguish different Supabase projects on the same host. Defaults to the
 # working directory name when running `supabase init`.
-project_id = "crystal"
+project_id = "kitto_beta"
 
 [api]
 enabled = true
@@ -118,7 +118,7 @@ max_frequency = "1s"
 
 # Auth templates
 [auth.email.template.confirmation]
-subject = "Crystal-OTP Confirmation"
+subject = "Kitto-OTP Confirmation"
 content_path = "./supabase/templates/confirmation.html"
 
 [auth.sms]

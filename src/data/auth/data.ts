@@ -26,7 +26,7 @@ export const getLoginProviders = () => [
 ];
 
 export const STRINGS = {
-  SIGNUP_TITLE: "Welcome to Crystal",
+  SIGNUP_TITLE: "Welcome to Kitto",
   SIGNUP_SUBTITLE:
     "Get stock predictions, portfolio analysis, and financial insights—just by asking.",
   FIRST_NAME: "First name",

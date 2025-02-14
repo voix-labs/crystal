@@ -11,6 +11,8 @@ import React, { useState } from "react";
 import LabelInputContainer from "./label-input-container";
 import OTPInputCard from "./otp-input";
 import ThemeToggleButton from "./theme-toggle-button";
+import KITTO_LOGO from "@public/trademark/kitto/app-logo.svg"
+import KITTO_LOGO_DARK from "@public/trademark/kitto/app-logo-dark.svg"
 
 export default function SignInForm() {
   const [isShowOTP, setIsShowOTP] = useState(false);
@@ -39,23 +41,26 @@ export default function SignInForm() {
 
       <div className="flex justify-center mb-4">
         <Image
-          src="/trademark/crystal/app-logo.svg"
+          src={KITTO_LOGO}
           alt="App logo"
           width={40}
           height={40}
           className="hidden dark:block"
         />
+
         <Image
-          src="/trademark/crystal/app-logo-dark.svg"
+          src={KITTO_LOGO_DARK}
           alt="App logo"
           width={40}
           height={40}
           className="dark:hidden"
         />
       </div>
+
       <h2 className="font-bold text-3xl text-neutral-800 dark:text-neutral-200 text-center">
         {STRINGS.SIGNUP_TITLE}
       </h2>
+
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300/50 text-center">
         {STRINGS.SIGNUP_SUBTITLE}
       </p>
