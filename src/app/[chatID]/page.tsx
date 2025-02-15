@@ -1,22 +1,7 @@
-/**
- * Copyright 2024 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 "use client";
-import { Altair } from '@/components/chat/altair/Altair';
-import ControlTray from '@/components/chat/control-tray/ControlTray';
-import SidePanel from '@/components/chat/side-panel/SidePanel';
+import { Altair } from '@/components/chat/altair/altair';
+import ControlTray from '@/components/chat/control-tray/control-tray';
+import SidePanel from '@/components/chat/side-panel/side-panel';
 import { cn } from '@/lib/utils';
 import { LiveAPIProvider } from '@contexts/LiveAPIContext';
 import { useRef, useState } from 'react';
