@@ -13,36 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { FC, ReactNode, createContext, useContext } from 'react';
 
-import { createContext, FC, ReactNode, useContext } from "react";
-import { useLiveAPI, UseLiveAPIResults } from "../hooks/use-live-api";
+import { UseLiveAPIResults, useLiveAPI } from '../hooks/use-live-api';
 
 const LiveAPIContext = createContext<UseLiveAPIResults | undefined>(undefined);
 
 export type LiveAPIProviderProps = {
-  children: ReactNode;
-  url?: string;
-  apiKey: string;
+    children: ReactNode;
+    url?: string;
+    apiKey: string;
 };
 
 export const LiveAPIProvider: FC<LiveAPIProviderProps> = ({
-  url,
-  apiKey,
-  children,
+    url,
+    apiKey,
+    children,
 }) => {
-  const liveAPI = useLiveAPI({ url, apiKey });
+    const liveAPI = useLiveAPI({ url, apiKey });
 
-  return (
-    <LiveAPIContext.Provider value={liveAPI}>
-      {children}
-    </LiveAPIContext.Provider>
-  );
+    return (
+        <LiveAPIContext.Provider value={liveAPI}>
+            {children}
+        </LiveAPIContext.Provider>
+    );
 };
 
 export const useLiveAPIContext = () => {
-  const context = useContext(LiveAPIContext);
-  if (!context) {
-    throw new Error("useLiveAPIContext must be used wihin a LiveAPIProvider");
-  }
-  return context;
+    const context = useContext(LiveAPIContext);
+    if (!context) {
+        throw new Error(
+            'useLiveAPIContext must be used wihin a LiveAPIProvider'
+        );
+    }
+    return context;
 };

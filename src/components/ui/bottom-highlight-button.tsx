@@ -1,25 +1,33 @@
-"use client"
-import { IconProps } from "@tabler/icons-react";
-import { ForwardRefExoticComponent } from "react";
-import Image from "next/image";
-import { Button } from "@components/ui/button";
+'use client';
+
+import { Button } from '@components/ui/button';
+import { IconProps } from '@tabler/icons-react';
+import Image from 'next/image';
+import { ForwardRefExoticComponent } from 'react';
 
 type IconType = string | ForwardRefExoticComponent<IconProps>;
 
-export function BottomHighlightButton({ title, disabled, Icon }: { title: string; disabled: Boolean; Icon?: IconType }) {
+export function BottomHighlightButton({
+    title,
+    disabled,
+    Icon,
+}: {
+    title: string;
+    disabled: Boolean;
+    Icon?: IconType;
+}) {
     return (
         <Button
             disabled={disabled as boolean}
-            className={`relative group/btn flex space-x-2 items-center justify-start w-full h-12 rounded-lg dark:text-neutral-200 dark:bg-neutral-700/50 dark:hover:bg-neutral-700/80`}
+            className={`group/btn relative flex h-12 w-full items-center justify-start space-x-2 rounded-lg dark:bg-neutral-700/50 dark:text-neutral-200 dark:hover:bg-neutral-700/80`}
             type="submit"
         >
-            {Icon && (
-                typeof Icon === "string" ? (
+            {Icon &&
+                (typeof Icon === 'string' ? (
                     <Image src={Icon} alt={title} width={16} height={16} />
                 ) : (
                     <Icon width={16} height={16} />
-                )
-            )}
+                ))}
 
             {title}
 
@@ -31,8 +39,8 @@ export function BottomHighlightButton({ title, disabled, Icon }: { title: string
 function BottomGradient() {
     return (
         <>
-            <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-            <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-2 w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+            <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
+            <span className="absolute inset-x-10 -bottom-px mx-auto block h-2 w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
         </>
     );
 }
