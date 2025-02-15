@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
 import { ToolCall } from '@/config/chat/multimodal-live-types';
 import { useLiveAPIContext } from '@contexts/LiveAPIContext';
 import { type FunctionDeclaration, SchemaType } from '@google/generative-ai';

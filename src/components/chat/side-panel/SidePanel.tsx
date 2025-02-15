@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
 import Logger, { LoggerFilterType } from '@/components/chat/logger/Logger';
 import { cn } from '@/lib/utils';
 import { useLiveAPIContext } from '@contexts/LiveAPIContext';

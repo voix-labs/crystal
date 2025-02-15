@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
 import { FC, ReactNode, createContext, useContext } from 'react';
 
 import { UseLiveAPIResults, useLiveAPI } from '../hooks/use-live-api';

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
 import { useEffect, useState } from 'react';
 
 import { UseMediaStreamResult } from './use-media-stream-mux';
