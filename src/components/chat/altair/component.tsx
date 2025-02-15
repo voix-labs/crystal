@@ -1,41 +1,10 @@
-"use client";
+'use client';
+
 import { ToolCall } from '@/config/chat/multimodal-live-types';
 import { useLiveAPIContext } from '@contexts/LiveAPIContext';
 import { type FunctionDeclaration, SchemaType } from '@google/generative-ai';
 import { memo, useEffect, useRef, useState } from 'react';
 import vegaEmbed from 'vega-embed';
-
-/**
- * Copyright 2024 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * Copyright 2024 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 const declaration: FunctionDeclaration = {
   name: 'render_altair',
@@ -90,7 +59,7 @@ function AltairComponent() {
         (fc) => fc.name === declaration.name
       );
       if (fc) {
-        const str = (fc.args as any).json_graph;
+        const str = (fc.args as { json_graph: string }).json_graph;
         setJSONString(str);
       }
       // send data for the response of your tool call

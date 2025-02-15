@@ -34,7 +34,7 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="shadow-input bg-background border-border m-10 mx-auto h-fit w-fit rounded-none border p-4 md:rounded-2xl md:p-8">
+    <div className="m-10 mx-auto h-fit w-fit rounded-none border border-border bg-background p-4 shadow-input md:rounded-2xl md:p-8">
       <div className="flex justify-end">
         <ThemeToggleButton />
       </div>
