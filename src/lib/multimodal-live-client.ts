@@ -36,7 +36,7 @@ import {
     isToolCallCancellationMessage,
     isToolCallMessage,
     isTurnComplete,
-} from '../multimodal-live-types';
+} from '@config/chat/multimodal-live-types';
 import { base64ToArrayBuffer, blobToJSON } from './utils';
 
 /**

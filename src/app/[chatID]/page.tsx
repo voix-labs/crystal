@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
 import { Altair } from '@/components/chat/altair/Altair';
 import ControlTray from '@/components/chat/control-tray/ControlTray';
 import SidePanel from '@/components/chat/side-panel/SidePanel';
@@ -22,9 +23,10 @@ import { useRef, useState } from 'react';
 
 import './App.scss';
 
-const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
-if (typeof API_KEY !== 'string') {
-    throw new Error('set REACT_APP_GEMINI_API_KEY in .env');
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string;
+
+if (!API_KEY) {
+    throw new Error('set NEXT_GEMINI_API_KEY in .env');
 }
 
 const host = 'generativelanguage.googleapis.com';

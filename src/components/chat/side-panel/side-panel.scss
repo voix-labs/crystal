@@ -14,20 +14,13 @@
       color: var(--Neutral-90);
     }
 
-    .react-select__option {
-    }
-    .react-select__value-container {
-    }
-    .react-select__indicators {
-    }
     .react-select__option:hover,
     .react-select__option:focus,
-    .react-select_option:focus-within {
+    .react-select__option:focus-within {
       background: var(--Neutral-30);
     }
-    .react-select__option--is-focused: {
+    .react-select__option--is-focused {
       background: var(--Neutral-30);
-    }
   }
   background: var(--Neutral-00);
   width: 40px; /* when closed */
@@ -84,16 +77,12 @@
         display 0.2s ease-in;
       transition-behavior: allow-discrete;
 
-      @starting-style {
+    }
+  }
+      &.starting-style {
         left: 0%;
         opacity: 1;
       }
-    }
-  }
-
-  .opener {
-    height: 30px;
-    transition: transform 0.2s ease-in;
   }
 
   &:not(.open) {

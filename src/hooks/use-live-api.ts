@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AudioStreamer } from '../lib/audio-streamer';
@@ -22,7 +23,7 @@ import {
 } from '../lib/multimodal-live-client';
 import { audioContext } from '../lib/utils';
 import VolMeterWorket from '../lib/worklets/vol-meter';
-import { LiveConfig } from '../multimodal-live-types';
+import { LiveConfig } from '@config/chat/multimodal-live-types';
 
 export type UseLiveAPIResults = {
     client: MultimodalLiveClient;

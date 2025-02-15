@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
 import AudioPulse from '@/components/chat/audio-pulse/AudioPulse';
 import { cn } from '@/lib/utils';
 import { useLiveAPIContext } from '@contexts/LiveAPIContext';
