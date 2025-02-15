@@ -1,5 +1,5 @@
-import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
+import React from 'react';
 
 const LabelInputContainer = ({
     children,
@@ -9,7 +9,7 @@ const LabelInputContainer = ({
     className?: string;
 }) => {
     return (
-        <div className={cn("flex flex-col space-y-2 w-full", className)}>
+        <div className={cn('flex w-full flex-col space-y-2', className)}>
             {children}
         </div>
     );
