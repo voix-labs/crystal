@@ -23,8 +23,9 @@ import { useRef, useState } from 'react';
 
 import './App.scss';
 
-const API_KEY = process.env.NEXT_GEMINI_API_KEY as string;
-if (typeof API_KEY !== 'string') {
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string;
+
+if (!API_KEY) {
     throw new Error('set NEXT_GEMINI_API_KEY in .env');
 }
 
