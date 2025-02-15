@@ -1,50 +1,48 @@
 import { cn } from '@/lib/utils';
 import { useEffect, useRef } from 'react';
 
-import './audio-pulse.scss';
-
 const lineCount = 3;
 
 export type AudioPulseProps = {
-    active: boolean;
-    volume: number;
-    hover?: boolean;
+  active: boolean;
+  volume: number;
+  hover?: boolean;
 };
 
 export default function AudioPulse({ active, volume, hover }: AudioPulseProps) {
-    const lines = useRef<HTMLDivElement[]>([]);
+  const lines = useRef<HTMLDivElement[]>([]);
 
-    useEffect(() => {
-        let timeout: number | null = null;
-        const update = () => {
-            lines.current.forEach(
-                (line, i) =>
-                    (line.style.height = `${Math.min(
-                        24,
-                        4 + volume * (i === 1 ? 400 : 60)
-                    )}px`)
-            );
-            timeout = window.setTimeout(update, 100);
-        };
+  useEffect(() => {
+    let timeout: number | null = null;
+    const update = () => {
+      lines.current.forEach(
+        (line, i) =>
+          (line.style.height = `${Math.min(
+            24,
+            4 + volume * (i === 1 ? 400 : 60)
+          )}px`)
+      );
+      timeout = window.setTimeout(update, 100);
+    };
 
-        update();
+    update();
 
-        return () => clearTimeout((timeout as number)!);
-    }, [volume]);
+    return () => clearTimeout((timeout as number)!);
+  }, [volume]);
 
-    return (
-        <div className={cn('audioPulse', { active, hover })}>
-            {Array(lineCount)
-                .fill(null)
-                .map((_, i) => (
-                    <div
-                        key={i}
-                        ref={el => {
-                            lines.current[i] = el!;
-                        }}
-                        style={{ animationDelay: `${i * 133}ms` }}
-                    />
-                ))}
-        </div>
-    );
+  return (
+    <div className={cn('audioPulse', { active, hover })}>
+      {Array(lineCount)
+        .fill(null)
+        .map((_, i) => (
+          <div
+            key={i}
+            ref={(el) => {
+              lines.current[i] = el!;
+            }}
+            style={{ animationDelay: `${i * 133}ms` }}
+          />
+        ))}
+    </div>
+  );
 }
